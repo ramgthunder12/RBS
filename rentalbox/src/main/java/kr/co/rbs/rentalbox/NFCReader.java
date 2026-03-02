@@ -52,6 +52,8 @@ public class NFCReader implements Runnable {
 			process.destroy();
 			System.out.println("수신한 카드 UID : " + uid);
 		} catch (Exception e) {
+			System.out.println("카드 UID 수신 오류");
+			e.printStackTrace();
 		} finally {
 			if (in != null) {
 				try {

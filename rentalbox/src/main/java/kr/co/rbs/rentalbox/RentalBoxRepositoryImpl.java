@@ -150,10 +150,13 @@ public class RentalBoxRepositoryImpl implements RentalBoxRepository {
 			}
 		}
 
-		Gson gson = new Gson();
+		if (responseBody == null) {
+			System.out.println("카드 UID 인증키 대조 응답 없음");
+			return false;
+		}
 
-		CompareResult result = new CompareResult();
-		result = gson.fromJson(responseBody, CompareResult.class);
+		Gson gson = new Gson();
+		CompareResult result = gson.fromJson(responseBody, CompareResult.class);
 
 		return result.getResult();
 	}

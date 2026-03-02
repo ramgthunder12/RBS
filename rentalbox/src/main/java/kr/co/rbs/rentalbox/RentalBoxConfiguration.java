@@ -53,13 +53,23 @@ public class RentalBoxConfiguration {
 		}
 	}
 	
-	public void setStatus(boolean isOpend) {
+	public void setStatus(boolean isOpened) {
+		FileOutputStream out = null;
 		try {
-			config.setProperty("isOpened", String.valueOf(isOpend));
-			config.store(new FileOutputStream(new File("/home/pi/java/resources/").getAbsoluteFile() + File.separator + CONFIG_FILE_NAME), "");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			config.setProperty("isOpened", String.valueOf(isOpened));
+			out = new FileOutputStream(new File("/home/pi/java/resources/").getAbsoluteFile() + File.separator + CONFIG_FILE_NAME);
+			config.store(out, "");
+		} catch (IOException e) {
+			System.out.println("설정 파일 저장 오류");
 			e.printStackTrace();
+		} finally {
+			if (out != null) {
+				try {
+					out.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 	
