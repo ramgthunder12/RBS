@@ -21,7 +21,7 @@ public class RentalBoxServiceImpl implements RentalBoxService {
 				rentalBoxRepository.registerUsageHistory('C');
 			}
 		} catch (InterruptedException e) {
-			System.out.println("잠금 처리 중 오류 발생");
+			System.out.println("잠금 처리 중 모터 동작 인터럽트 오류 발생");
 			e.printStackTrace();
 		}
 	}
@@ -43,7 +43,7 @@ public class RentalBoxServiceImpl implements RentalBoxService {
 					rentalBoxRepository.registerUsageHistory('O');
 				}
 			} catch (InterruptedException e) {
-				System.out.println("인증 처리 중 오류 발생");
+				System.out.println("인증 처리 중 모터 동작 인터럽트 오류 발생");
 				e.printStackTrace();
 			}
 		}
